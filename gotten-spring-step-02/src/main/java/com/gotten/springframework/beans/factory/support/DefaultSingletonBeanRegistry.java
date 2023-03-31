@@ -1,4 +1,6 @@
-package com.gotten.springframework.beans.factory.config;
+package com.gotten.springframework.beans.factory.support;
+
+import com.gotten.springframework.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +11,7 @@ import java.util.Map;
  * @date 2023/3/31 17:41
  * @description
  */
-public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry{
+public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
     private Map<String, Object> singletonObjects = new HashMap<>();
 
