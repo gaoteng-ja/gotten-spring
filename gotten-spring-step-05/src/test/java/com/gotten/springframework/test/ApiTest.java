@@ -1,17 +1,13 @@
-package test;
+package com.gotten.springframework.test;
 
 import cn.hutool.core.io.IoUtil;
-import com.gotten.springframework.beans.PropertyValue;
-import com.gotten.springframework.beans.PropertyValues;
-import com.gotten.springframework.beans.factory.config.BeanDefinition;
-import com.gotten.springframework.beans.factory.config.BeanReference;
 import com.gotten.springframework.beans.factory.support.DefaultListableBeanFactory;
+import com.gotten.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import com.gotten.springframework.core.io.DefaultResourceLoader;
 import com.gotten.springframework.core.io.Resource;
+import com.gotten.springframework.test.bean.UserService;
 import org.junit.Before;
 import org.junit.Test;
-import test.bean.UserDao;
-import test.bean.UserService;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,7 +44,25 @@ public class ApiTest {
     }
 
     @Test
-    public void testURL() {
+    public void testURL() throws IOException {
+        Resource resource = resourceLoader.getResource("https://github.com/gaoteng-ja/gotten-spring/blob/main/gotten-spring-step-05/src/test/resources/important.properties");
+        InputStream inputStream = resource.getInputStream();
+        String content = IoUtil.readUtf8(inputStream);
+        System.out.println(content);
+    }
 
+    @Test
+    public void testXml() {
+        //1.初始化BeanFactory
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        //2.读取配置文件&注册bean
+        XmlBeanDefinitionReader definitionReader = new XmlBeanDefinitionReader(beanFactory);
+        definitionReader.loadBeanDefinitions("classpath:spring.xml");
+
+        //3.获取bean对象调用方法
+        UserService userService = beanFactory.getBean("userService", UserService.class);
+        String result = userService.queryUserInfo();
+        System.out.println("测试结果：" + result);
     }
 }
