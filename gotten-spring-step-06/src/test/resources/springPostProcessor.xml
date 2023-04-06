@@ -7,4 +7,7 @@
         <property name="company" value="腾讯"/>
         <property name="location" value="深圳"/>
     </bean>
+
+    <bean class="com.gotten.springframework.test.common.MyBeanFactoryPostProcessor"/>
+    <bean class="com.gotten.springframework.test.common.MyBeanPostProcessor"/>
 </beans>

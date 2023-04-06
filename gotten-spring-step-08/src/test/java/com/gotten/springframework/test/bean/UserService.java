@@ -1,12 +1,15 @@
 package com.gotten.springframework.test.bean;
 
+import com.gotten.springframework.beans.factory.DisposableBean;
+import com.gotten.springframework.beans.factory.InitializingBean;
+
 /**
  * @author gaoteng
  * @version v1.0
  * @date 2023/3/31 16:49
  * @description
  */
-public class UserService {
+public class UserService implements InitializingBean, DisposableBean {
 
     private String userId;
 
@@ -15,6 +18,16 @@ public class UserService {
     private String location;
 
     private UserDao userDao;
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("执行：UserService.destroy");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("执行：UserService.afterPropertiesSet");
+    }
 
     public String queryUserInfo() {
         return userDao.queryUserName(userId);

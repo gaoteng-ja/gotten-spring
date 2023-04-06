@@ -11,9 +11,9 @@ import java.lang.reflect.Constructor;
  * @date 2023/3/31 18:31
  * @description
  */
-public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory{
+public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
 
-//    private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
+    //    private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
     private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
 
     @Override
