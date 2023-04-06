@@ -1,7 +1,8 @@
 package com.gotten.springframework.test.bean;
 
-import com.gotten.springframework.beans.factory.DisposableBean;
-import com.gotten.springframework.beans.factory.InitializingBean;
+import com.gotten.springframework.beans.BeanException;
+import com.gotten.springframework.beans.factory.*;
+import com.gotten.springframework.context.ApplicationContext;
 
 /**
  * @author gaoteng
@@ -9,7 +10,7 @@ import com.gotten.springframework.beans.factory.InitializingBean;
  * @date 2023/3/31 16:49
  * @description
  */
-public class UserService implements InitializingBean, DisposableBean {
+public class UserService implements InitializingBean, DisposableBean, BeanFactoryAware, BeanNameAware, BeanClassLoaderAware, ApplicationContextAware {
 
     private String userId;
 
@@ -18,6 +19,30 @@ public class UserService implements InitializingBean, DisposableBean {
     private String location;
 
     private UserDao userDao;
+
+    private ApplicationContext applicationContext;
+
+    private BeanFactory beanFactory;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeanException {
+        this.applicationContext = applicationContext;
+    }
+
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) throws BeanException {
+        System.out.println("classloader: " + classLoader);
+    }
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeanException {
+        this.beanFactory = beanFactory;
+    }
+
+    @Override
+    public void setBeanName(String beanName) throws BeanException {
+        System.out.println("BeanName: " + beanName);
+    }
 
     @Override
     public void destroy() throws Exception {
@@ -63,6 +88,14 @@ public class UserService implements InitializingBean, DisposableBean {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public BeanFactory getBeanFactory() {
+        return beanFactory;
     }
 
     @Override
