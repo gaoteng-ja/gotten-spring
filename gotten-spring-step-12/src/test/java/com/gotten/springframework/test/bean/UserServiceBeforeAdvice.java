@@ -1,0 +1,19 @@
+package com.gotten.springframework.test.bean;
+
+import com.gotten.springframework.aop.MethodBeforeAdvice;
+
+import java.lang.reflect.Method;
+
+/**
+ * @author gaoteng
+ * @version v1.0
+ * @date 2023/4/10 18:21
+ * @description
+ */
+public class UserServiceBeforeAdvice implements MethodBeforeAdvice {
+
+    @Override
+    public void before(Method method, Object[] args, Object target) throws Throwable {
+        System.out.println("拦截方法： " + method.getName());
+    }
+}
