@@ -1,7 +1,7 @@
 package com.gotten.springframework.aop.framework.autoproxy;
 
 import com.gotten.springframework.aop.*;
-import com.gotten.springframework.aop.aspectJ.AspectJExpressionPointcutAdvisor;
+import com.gotten.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor;
 import com.gotten.springframework.aop.framework.ProxyFactory;
 import com.gotten.springframework.beans.BeanException;
 import com.gotten.springframework.beans.PropertyValues;

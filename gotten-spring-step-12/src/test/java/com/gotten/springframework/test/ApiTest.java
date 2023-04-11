@@ -1,9 +1,8 @@
 package com.gotten.springframework.test;
 
 import com.gotten.springframework.aop.AdvisedSupport;
-import com.gotten.springframework.aop.MethodMatcher;
 import com.gotten.springframework.aop.TargetSource;
-import com.gotten.springframework.aop.aspectJ.AspectJExpressionPointcut;
+import com.gotten.springframework.aop.aspectj.AspectJExpressionPointcut;
 import com.gotten.springframework.aop.framework.Cglib2AopProxy;
 import com.gotten.springframework.aop.framework.JdkDynamicAopProxy;
 import com.gotten.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,10 +10,6 @@ import com.gotten.springframework.test.bean.IUserService;
 import com.gotten.springframework.test.bean.UserService;
 import com.gotten.springframework.test.bean.UserServiceInterceptor;
 import org.junit.Test;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 /**
  * @author gaoteng
