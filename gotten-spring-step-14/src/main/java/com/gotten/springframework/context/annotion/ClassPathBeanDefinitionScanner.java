@@ -1,6 +1,7 @@
 package com.gotten.springframework.context.annotion;
 
 import cn.hutool.core.util.StrUtil;
+import com.gotten.springframework.beans.factory.annotion.AutowiredAnnotationBeanPostProcessor;
 import com.gotten.springframework.beans.factory.config.BeanDefinition;
 import com.gotten.springframework.beans.factory.support.BeanDefinitionRegistry;
 import com.gotten.springframework.stereotype.Component;
@@ -32,6 +33,8 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
                 registry.registerBeanDefinition(determineBeanName(beanDefinition), beanDefinition);
             }
         }
+
+        registry.registerBeanDefinition("com.gotten.springframework.context.annotation.internalAutowiredAnnotationProcessor", new BeanDefinition(AutowiredAnnotationBeanPostProcessor.class));
     }
 
     private String resolveBeanScope(BeanDefinition beanDefinition) {
